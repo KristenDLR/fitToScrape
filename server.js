@@ -2,6 +2,7 @@ var express = require("express");
 var expresshbs = require('express-handlebars');
 var logger = require("morgan");
 var mongoose = require("mongoose");
+var favicon = require('serve-favicon')
 
 // Our scraping tools
 // Axios is a promised-based http library, similar to jQuery's Ajax method
@@ -10,6 +11,9 @@ var axios = require("axios");
 var cheerio = require("cheerio");
 
 var router = express.Router();
+
+//favicon
+// app.use(favicon(path.join(__dirname, 'public', 'img','favicon_io', 'favicon.ico')))
 
 // Require all models
 var db = require("./models");
