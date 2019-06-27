@@ -1,4 +1,5 @@
 var express = require("express");
+var expresshbs = require('express-handlebars');
 var logger = require("morgan");
 var mongoose = require("mongoose");
 
@@ -15,6 +16,10 @@ var PORT = 3000;
 
 // Initialize Express
 var app = express();
+// Register Handlebars view engine
+// app.engine('handlebars', expresshbs());
+// Use Handlebars view engine
+// app.set('view engine', 'handlebars');
 
 // Configure middleware
 
@@ -30,6 +35,15 @@ app.use(express.static("public"));
 var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
 
 mongoose.connect(MONGODB_URI);
+
+// nodemon: DeprecationWarning: current URL string parser is deprecated, and will be removed in a future version. To use the new parser, pass option { useNewUrlParser: true } to MongoClient.connect.
+// mongoose.connect(db, { useNewUrlParser: true }, function(error) {
+//   if (error) {
+//     console.log(error)
+//   } else {
+//     console.log("mongoose connection successful");
+//   }
+// });
 
 // Routes
 
