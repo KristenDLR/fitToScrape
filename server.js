@@ -26,20 +26,22 @@ app.use(express.json());
 // Make public a static folder
 app.use(express.static("public"));
 
-// Connect to the Mongo DB
-mongoose.connect("mongodb://localhost/unit18Populater", { useNewUrlParser: true });
+// If deployed, use the deployed database. Otherwise use the local mongoHeadlines database
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
+
+mongoose.connect(MONGODB_URI);
 
 // Routes
 
 // A GET route for scraping the echoJS website
 app.get("/scrape", function(req, res) {
   // First, we grab the body of the html with axios
-  axios.get("http://www.echojs.com/").then(function(response) {
+  axios.get("https://www.factcheck.org/").then(function(response) {
     // Then, we load that into cheerio and save it to $ for a shorthand selector
     var $ = cheerio.load(response.data);
 
     // Now, we grab every h2 within an article tag, and do the following:
-    $("article h2").each(function(i, element) {
+    $("article h3").each(function(i, element) {
       // Save an empty result object
       var result = {};
 
@@ -70,25 +72,52 @@ app.get("/scrape", function(req, res) {
 
 // Route for getting all Articles from the db
 app.get("/articles", function(req, res) {
-  // TODO: Finish the route so it grabs all of the articles
+  // Grab every document in tge Article collection
+  db.Article.find({})
+    .then(function(dbArticle){
+      //If we were able to successfully find Article, send this back to the client
+      res.send(dbArticle);
+    })
+    .catch(function(err){
+      //If error, send this to client
+      res.json(err);
+    })
 });
 
 // Route for grabbing a specific Article by id, populate it with it's note
 app.get("/articles/:id", function(req, res) {
-  // TODO
-  // ====
-  // Finish the route so it finds one article using the req.params.id,
-  // and run the populate method with "note",
-  // then responds with the article with the note included
+  // Using the id passed in the id parameter, prepare a query that find the matching one in our db
+  db.Article.findOne({_id: req.params.id})
+  //populate all the notes
+  .populate("note")
+  .then(function(dbArticle) {
+    //If successful, send this to client
+    res.send(dbArticle);
+  })
+  .catch(function(err) {
+    //If error send this to client
+    res.json(err);
+  })
 });
 
 // Route for saving/updating an Article's associated Note
 app.post("/articles/:id", function(req, res) {
-  // TODO
-  // ====
-  // save the new note that gets posted to the Notes collection
-  // then find an article from the req.params.id
-  // and update it's "note" property with the _id of the new note
+  // Create a new note and pass through req.body
+  db.Note.create(req.body)
+    .then(function(dbNote) {
+      //If successful find one Article with an id equal to params
+      //{ new: true } tell the query that we want to return the updated User
+      // Mongoose returns a promise
+    return db.Article.findOneAndUpdate({ _id: req.params.id }, { note: dbNote._is}, {new:true});
+    })
+    .th(function(dbArticle) {
+      //if successful return to client
+      res.send(dbArticle);
+    })
+    .catch(function(err) {
+      //If error return to client
+      res.json(err);
+    })
 });
 
 // Start the server
