@@ -18,9 +18,12 @@ var db = require("../models");
 var app = express();
 
 // Routes
+router.get("/", function(req, res){
+ res.render("index")
+})
 
 // A GET route for scraping the echoJS website
-app.get("/scrape", function(req, res) {
+router.get("/scrape", function(req, res) {
   // First, we grab the body of the html with axios
   axios.get("https://www.factcheck.org/").then(function(response) {
     // Then, we load that into cheerio and save it to $ for a shorthand selector
@@ -53,12 +56,29 @@ app.get("/scrape", function(req, res) {
 
     // Send a message to the client
     res.send("Scrape Complete");
+
+     // var hbsObject = {
+     //   user: data
+     // };
+
+    // res.render("index", hbsObject);
+
+
+
   });
+
+
+
+
+
+  // res send back to handlebars
+
+
 });
 
 // Route for getting all Articles from the db
-app.get("/articles", function(req, res) {
-  // Grab every document in tge Article collection
+router.get("/articles", function(req, res) {
+  // Grab every document in the Article collection
   db.Article.find({})
     .then(function(dbArticle){
       //If we were able to successfully find Article, send this back to the client
@@ -71,7 +91,7 @@ app.get("/articles", function(req, res) {
 });
 
 // Route for grabbing a specific Article by id, populate it with it's note
-app.get("/articles/:id", function(req, res) {
+router.get("/articles/:id", function(req, res) {
   // Using the id passed in the id parameter, prepare a query that find the matching one in our db
   db.Article.findOne({_id: req.params.id})
   //populate all the notes
@@ -87,7 +107,7 @@ app.get("/articles/:id", function(req, res) {
 });
 
 // Route for saving/updating an Article's associated Note
-app.post("/articles/:id", function(req, res) {
+router.post("/articles/:id", function(req, res) {
   // Create a new note and pass through req.body
   db.Note.create(req.body)
     .then(function(dbNote) {

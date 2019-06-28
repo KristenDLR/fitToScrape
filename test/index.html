@@ -2,15 +2,68 @@
 <html lang="en-us">
   <head>
     <meta charset="UTF-8">
+    <!-- Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- GoogleFonts -->
+    <link href="https://fonts.googleapis.com/css?family=Days+One|Fugaz+One|Merienda|Philosopher&display=swap" rel="stylesheet">
+
     <title>Scraping With Mongoose</title>
     <style>
-      body { background-color: #F2F6D0 }
+
+      /*Google Font Options
+      font-family: 'Merienda', cursive;
+      font-family: 'Philosopher', sans-serif;
+      font-family: 'Fugaz One', cursive;
+      font-family: 'Days One', sans-serif;*/
+
+
+      .BackgroundImage{
+        /* height:auto; */
+        /* width: 25px; */
+        opacity: .5;
+        z-index: -1;
+        position:absolute;
+        top: 0;
+        bottom: 0;
+        /* left: 0;
+        right: 0; */
+      }
+
+      h1{
+        font-family: 'Days One', sans-serif;
+      }
+      h2, h3{
+        font-family: 'Philosopher', sans-serif;
+        text-align: center;
+      }
+
+      nav{
+        color:white;
+        border-bottom:7px solid red;
+      }
+
+      .form-inline{
+        padding: 10px;
+
+      }
+
+      .nav-btn{
+        margin-right: 0;
+        margin-left: 290px;
+      }
+
       #wrapper {
+        margin-top: 40px;
         width: 960px;
         margin-left: auto;
         margin-right: auto;
         padding-top: 5%;
+        background-color: white;
+        border: 10px solid red;
+        border-radius: 8px;
+
+        opacity: .9;
+
       }
       #articles {
         display: inline-block;
@@ -43,14 +96,22 @@
           <form class="form-inline">
               <img src="img/flagcheck.png" height= "60px">
               <h1>What Are the Facts?</h1>
-              <button class="btn btn-outline-light" type="button">Main button</button>
-              <button class="btn btn-outline-light" type="button">Smaller button</button>
+              <div class="nav-btn mr-auto">
+              <button class="btn btn-outline-light" type="button">Scrape Article</button>
+              <button class="btn btn-outline-light" type="button">Clear Articles</button>
+              </div>
             </form>
         </nav>
 
+  <div class= "BackgroundImage">
+    <img src="./img/whatsthefacts2.png">
+  </div>
+
     <div id="wrapper">
-      <h1>Note Scraper</h1>
-      <h2><i>If you can do this...the homework should be no problem.</i></h2>
+      <h1>this is the index.html page</h1>
+      <h1>FactCheck.org Scrapper</h1>
+      <h2><i>A Location for individuals to Research the Credibility of Politicians in the Media</i></h2>
+      <h3><i>These articles provided to you have have been published through FactCheck.org. For further access to their archives please visit their website.</i></h3>
       <div id="articles"></div>
       <div id="notes"></div>
     </div>

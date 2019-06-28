@@ -4,6 +4,9 @@
 <head>
   <meta charset="utf-8">
   {{!-- bootstrap css --}}
+ <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css">
   <link rel="stylesheet" href="/styles/style.css" media="screen" title="no title" charset="utf-8">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -23,6 +26,9 @@
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script>
 
+  <!-- GoogleFonts -->
+    <link href="https://fonts.googleapis.com/css?family=Days+One|Fugaz+One|Merienda|Philosopher&display=swap" rel="stylesheet">
+
   {{!-- fontawesome --}}
   <script src="https://use.fontawesome.com/0e40840674.js"></script>
   <link href="https://fonts.googleapis.com/css?family=Architects+Daughter|Montserrat+Alternates&display=swap"
@@ -34,22 +40,18 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
   <!-- Material Design Bootstrap -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.2/css/mdb.min.css" rel="stylesheet">
-  <title>BuyAlly</title>
+  <title>What Are the Facts?</title>
 </head>
 
-<body>
-  <div id="backgroundImage">
-    <img src="../img/whatsthefacts2.png" alt="backgroundImage">
-  </div>
 
   {{{body}}}
-
-  {{> footer}}
 
 
   <!-- JQuery -->
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   {{!-- bootstrap jQuery --}}
+
+
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
     crossorigin="anonymous"></script>
@@ -68,10 +70,10 @@
     src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
   <!-- MDB core JavaScript -->
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.2/js/mdb.min.js"></script>
-  <script type="text/javascript" src="/models/Article.js"></script>
-  <script type="text/javascript" src="/models/index.js"></script>
-  <script type="text/javascript" src="/models/Note.js"></script>
-
+  <script src="../../models/Article.js"></script>
+  <script src="./models/index.js"></script>
+  <script src="./config/router.js"></script>
+  <script type="text/javascript" src="/js/scrape.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 

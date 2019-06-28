@@ -1,0 +1,78 @@
+
+      /*Google Font Options
+      font-family: 'Merienda', cursive;
+      font-family: 'Philosopher', sans-serif;
+      font-family: 'Fugaz One', cursive;
+      font-family: 'Days One', sans-serif;*/
+
+
+      .BackgroundImage{
+        /* height:auto; */
+        /* width: auto; */
+        opacity: .5;
+        z-index: -1;
+        position:absolute;
+        top: 0;
+        bottom: 0;
+        /* left: 0;
+        right: 0; */
+      }
+
+      h1{
+        font-family: 'Days One', sans-serif;
+      }
+      h2, h3{
+        font-family: 'Philosopher', sans-serif;
+        text-align: center;
+      }
+
+      nav{
+        color:white;
+      }
+
+      .form-inline{
+        padding: 10px;
+
+      }
+
+      .nav-btn{
+        margin-right: 0;
+        margin-left: 290px;
+      }
+
+      #wrapper {
+        margin-top: 40px;
+        width: 960px;
+        margin-left: auto;
+        margin-right: auto;
+        padding-top: 5%;
+        background-color: white;
+        border: 10px solid red;
+        border-radius: 8px;
+
+        opacity: .9;
+
+      }
+      #articles {
+        display: inline-block;
+        overflow: auto;
+        width: 60%;
+        height: 700px;
+      }
+      #notes {
+        float: right;
+        width: 30%;
+      }
+      textarea, input {
+        display: block;
+        width: 100%;
+        background-color: #FCF5C7;
+      }
+      input {
+        height: 36px;
+        font-size: 24px;
+      }
+      textarea {
+        height: 200px;
+        font-size: 18px;
+      }
