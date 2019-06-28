@@ -1,17 +1,24 @@
 $(document).ready(() => {
   // Getting references to our form and inputs
-  var scrape = $("button.scrape");
-  // var usernameInput = $("input#username");
-  // var passwordInput = $("input#password");
 
-  // When the form is submitted, we validate there's an email and password entered
-  scrape.on("scrap", event => {
+
+
+  // When the scrape button clicked, run /scrape
+  $(".scrape").on("click", event => {
     $.ajax({
       url: "/scrape",
       success: result => {
-        console.log("Successfully Hit User Route");
+        console.log("Successfully Hit Scrape");
+        
       }
 
   });
 })
+
+ // When the scrape button clicked, run /scrape
+ $(".clear").on("click", event => {
+
+      console.log("Scrape Cleared");
+    })
+
 });
