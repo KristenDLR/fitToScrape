@@ -9,9 +9,9 @@ $(document).ready(() => {
       url: "/scrape",
       success: result => {
         console.log("Successfully Hit Scrape");
-        
+        console.log(result);
       }
-
+    
   });
 })
 

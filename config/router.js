@@ -52,10 +52,13 @@ router.get("/scrape", function(req, res) {
           // If an error occurred, log it
           console.log(err);
         });
+
+      //send results to handlebars
+      res.render("index", result)
     });
 
     // Send a message to the client
-    res.send("Scrape Complete");
+    // res.send("Scrape Complete");
 
      // var hbsObject = {
      //   user: data
