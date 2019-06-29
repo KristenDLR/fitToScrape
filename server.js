@@ -9,6 +9,7 @@ var favicon = require('serve-favicon')
 // It works on the client and on the server
 var axios = require("axios");
 var cheerio = require("cheerio");
+require('dotenv').config()
 
 var router = express.Router();
 
@@ -18,7 +19,7 @@ var router = express.Router();
 // Require all models
 var db = require("./models");
 
-var PORT = 3000;
+var PORT = process.env.PORT;
 
 // Initialize Express
 var app = express();
@@ -38,7 +39,7 @@ app.use(express.json());
 app.use(express.static("public"));
 
 // If deployed, use the deployed database. Otherwise use the local mongoHeadlines database
-var MONGODB_URI = process.env.MONGODB_URI || "mongodb://user:password1@ds259305.mlab.com:59305/heroku_klb6j26d";
+var MONGODB_URI = process.env.MONGODB_URI;
 
 mongoose.connect(MONGODB_URI);
 
