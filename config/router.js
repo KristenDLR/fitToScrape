@@ -28,7 +28,7 @@ router.get("/scrape", function(req, res) {
   axios.get("https://www.factcheck.org/").then(function(response) {
     // Then, we load that into cheerio and save it to $ for a shorthand selector
     var $ = cheerio.load(response.data);
-
+    var results = [];
     // Now, we grab every h2 within an article tag, and do the following:
     $("article h3").each(function(i, element) {
       // Save an empty result object
@@ -54,9 +54,9 @@ router.get("/scrape", function(req, res) {
         });
 
       //send results to handlebars
-      res.render("index", result)
+        results.push(result);
     });
-
+    res.render("index", results)
     // Send a message to the client
     // res.send("Scrape Complete");
 
@@ -81,6 +81,7 @@ router.get("/scrape", function(req, res) {
 
 // Route for getting all Articles from the db
 router.get("/articles", function(req, res) {
+  //console.log("article hi");
   // Grab every document in the Article collection
   db.Article.find({})
     .then(function(dbArticle){
