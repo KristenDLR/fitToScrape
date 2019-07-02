@@ -65,18 +65,8 @@ router.get("/scrape", function(req, res) {
      // };
 
     // res.render("index", hbsObject);
-
-
-
   });
-
-
-
-
-
   // res send back to handlebars
-
-
 });
 
 // Route for getting all Articles from the db
