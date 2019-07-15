@@ -14,6 +14,9 @@ var router = express.Router();
 // Require all models
 var db = require("../models");
 
+// Save an empty result object
+var result = {};
+
 // Initialize Express
 var app = express();
 
@@ -31,8 +34,7 @@ router.get("/scrape", function(req, res) {
     var results = [];
     // Now, we grab every h2 within an article tag, and do the following:
     $("article h3").each(function(i, element) {
-      // Save an empty result object
-      var result = {};
+
 
       // Add the text and href of every link, and save them as properties of the result object
       result.title = $(this)
@@ -57,16 +59,11 @@ router.get("/scrape", function(req, res) {
         results.push(result);
     });
     res.render("index", results)
-    // Send a message to the client
-    // res.send("Scrape Complete");
 
-     // var hbsObject = {
-     //   user: data
-     // };
 
-    // res.render("index", hbsObject);
   });
-  // res send back to handlebars
+
+
 });
 
 // Route for getting all Articles from the db
@@ -123,3 +120,4 @@ router.post("/articles/:id", function(req, res) {
 
 //export router to use in server
 module.exports = router;
+// module.exports = results;

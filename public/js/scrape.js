@@ -1,7 +1,7 @@
+
 $(document).ready(() => {
   // Getting references to our form and inputs
-
-
+// Require all models
 
   // When the scrape button clicked, run /scrape
   $(".scrape").on("click", event => {
@@ -9,16 +9,22 @@ $(document).ready(() => {
       url: "/scrape",
       success: result => {
         console.log("Successfully Hit Scrape");
-        console.log(result);
+        console.log(results);
       }
-    
+
   });
 })
 
  // When the scrape button clicked, run /scrape
  $(".clear").on("click", event => {
+  $.ajax({
+    url: "/articles",
+    success: result => {
+      console.log("Scrape Cleared")
+      $("#articles").empty();
+    }
+  });
 
-      console.log("Scrape Cleared");
     })
 
 });

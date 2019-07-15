@@ -56,12 +56,19 @@
       #articles {
         display: inline-block;
         overflow: auto;
-        width: 60%;
+        /* width: 60%; */
         height: 700px;
+        font-family: 'Philosopher', sans-serif;
       }
+
+      .button5{
+        border-radius: 50%;
+        size:
+      }
+
       #notes {
         float: right;
-        width: 30%;
+        /* width: 90%; */
       }
       textarea, input {
         display: block;

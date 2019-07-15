@@ -1,14 +1,5 @@
-<nav class="navbar navbar-dark bg-primary">
-          <!-- Navbar content -->
-          <form class="form-inline">
-              <img src="img/flagcheck.png" height= "60px">
-              <h1>What Are the Facts?</h1>
-              <div class="nav-btn mr-auto">
-              <button class="scrape btn btn-outline-light" type="button">Scrape Article<a href="/scrape"></a></button>
-              <button class="clear btn btn-outline-light" type="button">Clear Articles</button>
-              </div>
-            </form>
-        </nav>
+<div id="home">
+{{> nav }};
 
   <div class= "BackgroundImage">
     <img src="./img/whatsthefacts2.png">
@@ -18,6 +9,27 @@
       <h1>FactCheck.org Scrapper</h1>
       <h2><i>A Location for individuals to Research the Credibility of Politicians in the Media</i></h2>
       <h3><i>These articles provided to you have have been published through FactCheck.org. For further access to their archives please visit their website.</i></h3>
-      <div id="articles"></div>
-      <div id="notes"></div>
+      <div id="articles">
+      {{#each article}}
+ <div class="card border-primary mb-3">
+   <div class="card-header text-center">
+     <a href={{this.link}} target="_blank">
+       <h3>{{this.title}}</h3>
+     </a>
+   </div>
+   <div class="card-body text-center">
+     <p>{{this.sum}}</p>
+     <br>
+     <button type="button" class="btn btn-success addNote" data-toggle="modal" data-target="#noteModal{{this._id}}"
+       data-id={{this._id}}>Article Notes</button>
+     <button type="button" class="btn btn-danger delete" data-id={{this._id}}>Delete From Saved</button>
+   </div>
+ </div>
+ {{/each}}
+
+      </div>
+      <div id="notes">
+      </div>
     </div>
+
+  </div>
